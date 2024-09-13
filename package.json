@@ -1,0 +1,27 @@
+{
+  "name": "js13k-2024",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "fix": "biome check --apply .",
+    "lint": "biome check .",
+    "test": "vitest --run",
+    "test:watch": "vitest --watch",
+    "preview": "vite preview",
+    "shadermin": "node --loader ts-node/esm src/shadermin.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/node": "22.4.0",
+    "js13k-vite-plugins": "0.3.4",
+    "terser": "5.31.6",
+    "ts-node": "10.9.2",
+    "typescript": "5.5.4",
+    "vite": "5.4.1",
+    "vitest": "2.0.5"
+  }
+}
