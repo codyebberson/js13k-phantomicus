@@ -4,6 +4,8 @@
 
 Welcome to Dr. Zaphod Beeblebrox's spirit-infested lab! Armed with your Spook Siphon and a PhD in Paranormal Pest Control, ascend 13 floors to defeat the spectral infestation.
 
+Play: https://js13kgames.com/2024/games/phantomicus
+
 ## Overview
 
 Navigate challenging levels:
@@ -11,6 +13,10 @@ Navigate challenging levels:
 - Collect Spectral Sparks (gold cubes) to power your Spook Siphon
 - Use your powered-up Siphon to capture ghosts and interact with objects
 - Find keys to progress through locked doors
+
+## Demo Video
+
+https://github.com/user-attachments/assets/32a791ea-5a4f-4f84-a819-3462b3675434
 
 ## User Interface
 
