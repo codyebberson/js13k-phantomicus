@@ -4,7 +4,7 @@
 import { DEBUG } from '../debug';
 import { EPSILON } from './constants';
 import { Vec3 } from './vec3';
-import { Vec4, dotVec4, scaleVec4 } from './vec4';
+// import { Vec4, dotVec4, scaleVec4 } from './vec4';
 
 export type Quaternion = Float32Array & { length: 4 };
 
@@ -20,6 +20,24 @@ export type Quaternion = Float32Array & { length: 4 };
  */
 export const createQuaternion = (x = 0, y = 0, z = 0, w = 1): Quaternion =>
   new Float32Array([x, y, z, w]) as Quaternion;
+
+/**
+ * Set the components of a vec4 to the given values
+ *
+ * @param out the receiving vector
+ * @param x X component
+ * @param y Y component
+ * @param z Z component
+ * @param w W component
+ * @returns out
+ */
+export const setQuat = (out: Quaternion, x: number, y: number, z: number, w = 0): Quaternion => {
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  out[3] = w;
+  return out;
+};
 
 /**
  * Calculates the magnitude of a vec3
@@ -106,18 +124,18 @@ export const getAxisAngleQuat = (out_axis: Vec3, q: Quaternion): number => {
   return rad;
 };
 
-/**
- * Gets the angular distance between two unit quaternions
- *
- * @param a     Origin unit quaternion
- * @param b     Destination unit quaternion
- * @return     Angle, in radians, between the two quaternions
- */
-export const getAngleQuat = (a: Quaternion, b: Quaternion): number => {
-  const dotproduct = dotVec4(a as Vec4, b as Vec4);
+// /**
+//  * Gets the angular distance between two unit quaternions
+//  *
+//  * @param a     Origin unit quaternion
+//  * @param b     Destination unit quaternion
+//  * @return     Angle, in radians, between the two quaternions
+//  */
+// export const getAngleQuat = (a: Quaternion, b: Quaternion): number => {
+//   const dotproduct = dotVec4(a as Vec4, b as Vec4);
 
-  return Math.acos(2 * dotproduct * dotproduct - 1);
-};
+//   return Math.acos(2 * dotproduct * dotproduct - 1);
+// };
 
 /**
  * Multiplies two quat's
@@ -296,20 +314,20 @@ export const lnQuat = (out: Quaternion, a: Quaternion): Quaternion => {
   return out;
 };
 
-/**
- * Calculate the scalar power of a unit quaternion.
- *
- * @param out the receiving quaternion
- * @param a quat to calculate the exponential of
- * @param b amount to scale the quaternion by
- * @return out
- */
-export const powQuat = (out: Quaternion, a: Quaternion, b: number): Quaternion => {
-  lnQuat(out, a);
-  scaleVec4(out, out, b);
-  expQuat(out, out);
-  return out;
-};
+// /**
+//  * Calculate the scalar power of a unit quaternion.
+//  *
+//  * @param out the receiving quaternion
+//  * @param a quat to calculate the exponential of
+//  * @param b amount to scale the quaternion by
+//  * @return out
+//  */
+// export const powQuat = (out: Quaternion, a: Quaternion, b: number): Quaternion => {
+//   lnQuat(out, a);
+//   scaleVec4(out, out, b);
+//   expQuat(out, out);
+//   return out;
+// };
 
 /**
  * Performs a spherical linear interpolation between two quat

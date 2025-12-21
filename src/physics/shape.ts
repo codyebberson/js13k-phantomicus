@@ -1,9 +1,8 @@
 import { GRAVITY } from '../constants';
 import { EPSILON } from '../math/constants';
 import { Mat4, createMat4, fromRotationTranslationMat4, invertMat4 } from '../math/mat4';
-import { Quaternion, createQuaternion, multiplyQuat, normalizeQuat } from '../math/quat';
+import { Quaternion, createQuaternion, multiplyQuat, normalizeQuat, setQuat } from '../math/quat';
 import { Vec3, createVec3, lessThanOrEqualsVec3, magnitudeVec3, scaleAndAddVec3 } from '../math/vec3';
-import { setVec4 } from '../math/vec4';
 
 export const STATIC_MASS = 10000;
 
@@ -75,7 +74,7 @@ export abstract class Shape {
       // Construct quaternion representing the rotation over dt
       // This converts the axis-angle representation (angular velocity * dt)
       // into a quaternion representation
-      setVec4(
+      setQuat(
         deltaRotationQuat,
         (x / magnitude) * sinHalfAngle, // Scaled x component
         (y / magnitude) * sinHalfAngle, // Scaled y component
