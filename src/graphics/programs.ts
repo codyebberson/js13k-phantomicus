@@ -10,10 +10,10 @@ import {
   VERTEX_SHADER,
 } from './glconstants';
 import {
-  ATTRIBUTE_COLOR,
-  ATTRIBUTE_NORMAL,
-  ATTRIBUTE_POSITION,
-  ATTRIBUTE_WORLDMATRIX,
+  A_COLOR,
+  A_NORMAL,
+  A_POSITION,
+  A_WORLDMATRIX,
   BLOOM_FRAG,
   BLOOM_VERT,
   MAIN_FRAG,
@@ -22,17 +22,17 @@ import {
   POST_VERT,
   SHADOW_FRAG,
   SHADOW_VERT,
-  UNIFORM_AMBIENTLIGHT,
-  UNIFORM_BLOOMTEXTURE,
-  UNIFORM_CAMERAPOSITION,
-  UNIFORM_COLORTEXTURE,
-  UNIFORM_DEPTHTEXTURE,
-  UNIFORM_ITERATION,
-  UNIFORM_LIGHTDIRECTION,
-  UNIFORM_LIGHTPOSITION,
-  UNIFORM_PROJECTIONMATRIX,
-  UNIFORM_SHADOWMAPMATRIX,
-  UNIFORM_VIEWMATRIX,
+  U_AMBIENTLIGHT,
+  U_BLOOMTEXTURE,
+  U_CAMERAPOSITION,
+  U_COLORTEXTURE,
+  U_DEPTHTEXTURE,
+  U_ITERATION,
+  U_LIGHTDIRECTION,
+  U_LIGHTPOSITION,
+  U_PROJECTIONMATRIX,
+  U_SHADOWMAPMATRIX,
+  U_VIEWMATRIX,
 } from './shaders';
 
 //
@@ -111,10 +111,10 @@ export const initShaderProgram = (
   gl.attachShader(program, fragmentShader);
 
   if (bindAttribs) {
-    gl.bindAttribLocation(program, positionAttrib, ATTRIBUTE_POSITION);
-    gl.bindAttribLocation(program, colorAttrib, ATTRIBUTE_COLOR);
-    gl.bindAttribLocation(program, normalAttrib, ATTRIBUTE_NORMAL);
-    gl.bindAttribLocation(program, worldMatrixAttrib, ATTRIBUTE_WORLDMATRIX);
+    gl.bindAttribLocation(program, positionAttrib, A_POSITION);
+    gl.bindAttribLocation(program, colorAttrib, A_COLOR);
+    gl.bindAttribLocation(program, normalAttrib, A_NORMAL);
+    gl.bindAttribLocation(program, worldMatrixAttrib, A_WORLDMATRIX);
   }
 
   gl.linkProgram(program);
@@ -136,8 +136,8 @@ export const initShaderProgram = (
 //
 
 export const shadowProgram = initShaderProgram(SHADOW_VERT, SHADOW_FRAG);
-export const shadowViewMatrixUniform = getUniform(shadowProgram, UNIFORM_VIEWMATRIX);
-export const shadowProjectionMatrixUniform = getUniform(shadowProgram, UNIFORM_PROJECTIONMATRIX);
+export const shadowViewMatrixUniform = getUniform(shadowProgram, U_VIEWMATRIX);
+export const shadowProjectionMatrixUniform = getUniform(shadowProgram, U_PROJECTIONMATRIX);
 
 //
 // Main program
@@ -146,14 +146,14 @@ export const shadowProjectionMatrixUniform = getUniform(shadowProgram, UNIFORM_P
 //
 
 export const mainProgram = initShaderProgram(MAIN_VERT, MAIN_FRAG);
-export const mainViewMatrixUniform = getUniform(mainProgram, UNIFORM_VIEWMATRIX);
-export const mainProjectionMatrixUniform = getUniform(mainProgram, UNIFORM_PROJECTIONMATRIX);
-export const mainShadowMapMatrixUniform = getUniform(mainProgram, UNIFORM_SHADOWMAPMATRIX);
-export const mainDepthTextureSamplerUniform = getUniform(mainProgram, UNIFORM_DEPTHTEXTURE);
-export const mainAmbientLightUniform = getUniform(mainProgram, UNIFORM_AMBIENTLIGHT);
-export const mainCameraPositionUniform = getUniform(mainProgram, UNIFORM_CAMERAPOSITION);
-export const mainLightPositionUniform = getUniform(mainProgram, UNIFORM_LIGHTPOSITION);
-export const mainLightDirectionUniform = getUniform(mainProgram, UNIFORM_LIGHTDIRECTION);
+export const mainViewMatrixUniform = getUniform(mainProgram, U_VIEWMATRIX);
+export const mainProjectionMatrixUniform = getUniform(mainProgram, U_PROJECTIONMATRIX);
+export const mainShadowMapMatrixUniform = getUniform(mainProgram, U_SHADOWMAPMATRIX);
+export const mainDepthTextureSamplerUniform = getUniform(mainProgram, U_DEPTHTEXTURE);
+export const mainAmbientLightUniform = getUniform(mainProgram, U_AMBIENTLIGHT);
+export const mainCameraPositionUniform = getUniform(mainProgram, U_CAMERAPOSITION);
+export const mainLightPositionUniform = getUniform(mainProgram, U_LIGHTPOSITION);
+export const mainLightDirectionUniform = getUniform(mainProgram, U_LIGHTDIRECTION);
 
 //
 // Bloom program
@@ -161,8 +161,8 @@ export const mainLightDirectionUniform = getUniform(mainProgram, UNIFORM_LIGHTDI
 //
 
 export const bloomProgram = initShaderProgram(BLOOM_VERT, BLOOM_FRAG);
-export const bloomColorTextureUniform = getUniform(bloomProgram, UNIFORM_COLORTEXTURE);
-export const bloomIterationUniform = getUniform(bloomProgram, UNIFORM_ITERATION);
+export const bloomColorTextureUniform = getUniform(bloomProgram, U_COLORTEXTURE);
+export const bloomIterationUniform = getUniform(bloomProgram, U_ITERATION);
 
 //
 // Depth of field program
@@ -170,11 +170,11 @@ export const bloomIterationUniform = getUniform(bloomProgram, UNIFORM_ITERATION)
 //
 
 export const depthOfFieldProgram = initShaderProgram(POST_VERT, POST_FRAG);
-export const depthOfFieldColorTextureUniform = getUniform(depthOfFieldProgram, UNIFORM_COLORTEXTURE);
-export const depthOfFieldDepthTextureUniform = getUniform(depthOfFieldProgram, UNIFORM_DEPTHTEXTURE);
-export const depthOfFieldBloomTextureUniform = getUniform(depthOfFieldProgram, UNIFORM_BLOOMTEXTURE);
-// export const depthOfFieldFocusNearUniform = getUniform(depthOfFieldProgram, UNIFORM_FOCUSNEAR);
-// export const depthOfFieldFocusFarUniform = getUniform(depthOfFieldProgram, UNIFORM_FOCUSFAR);
+export const depthOfFieldColorTextureUniform = getUniform(depthOfFieldProgram, U_COLORTEXTURE);
+export const depthOfFieldDepthTextureUniform = getUniform(depthOfFieldProgram, U_DEPTHTEXTURE);
+export const depthOfFieldBloomTextureUniform = getUniform(depthOfFieldProgram, U_BLOOMTEXTURE);
+// export const depthOfFieldFocusNearUniform = getUniform(depthOfFieldProgram, U_FOCUSNEAR);
+// export const depthOfFieldFocusFarUniform = getUniform(depthOfFieldProgram, U_FOCUSFAR);
 
 //
 // Post processing buffers

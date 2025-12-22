@@ -9,6 +9,10 @@ const config: UserConfigExport = {
   // ...js13kViteConfig({ roadrollerOptions: false }),
   // ...js13kViteConfig(),
   ...js13kViteConfig({
+    shaderMinifierOptions: {
+      shaderDir: './src/graphics/shaders',
+      outputFile: './src/graphics/shaders.ts',
+    },
     roadrollerOptions: {
       allowFreeVars: true,
       numAbbreviations: 15,

@@ -11,17 +11,15 @@
     "lint": "biome check .",
     "test": "vitest --run",
     "test:watch": "vitest --watch",
-    "preview": "vite preview",
-    "shadermin": "node --loader ts-node/esm src/shadermin.ts"
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@types/node": "22.4.0",
-    "js13k-vite-plugins": "0.3.4",
-    "terser": "5.31.6",
-    "ts-node": "10.9.2",
-    "typescript": "5.5.4",
-    "vite": "5.4.1",
-    "vitest": "2.0.5"
+    "@biomejs/biome": "2.3.10",
+    "@types/node": "25.0.3",
+    "js13k-vite-plugins": "0.6.0",
+    "terser": "5.44.1",
+    "typescript": "5.9.3",
+    "vite": "7.3.0",
+    "vitest": "4.0.16"
   }
 }
